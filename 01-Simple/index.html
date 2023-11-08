@@ -3,6 +3,8 @@
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="../ElementsExtractor.js"></script>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://quadjr.github.io/aframe-gaussian-splatting/index.js"></script>
     <script type="text/javascript">
       let API_KEY = '';
       let elmContainer;
@@ -147,8 +149,14 @@
     </script>
   </head>
   <body>
-    <a-scene>
+    <a-scene renderer="antialias: false" stats>
       <a-entity id="container"></a-entity>
+      <a-entity position="0 1.6 -2.0" animation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true">
+        <a-sphere position="0 0 0.5" radius="0.5" color="#EF2D5E"></a-sphere>
+        <a-sphere position="0 0 -0.5" radius="0.5" color="#EF2D5E"></a-sphere>
+      </a-entity>
+      <a-entity gaussian_splatting="src: https://huggingface.co/SeanLiu/splat/resolve/main/gs_Ava.splat;" rotation="0 0 0" position="0 1.5 -2"></a-entity>
+      <a-sky color="#000"></a-sky>
     </a-scene>
     <div style="position: fixed; top: 20px; left: 20px; width: 35%;">
       <textarea id="apikey" style="display: block; margin: 10px 0;font-size: 18px; width: 100%; height: 30px; white-space: nowrap;">Enter Your API Key</textarea>
